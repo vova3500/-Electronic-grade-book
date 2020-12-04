@@ -12,6 +12,13 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { Route } from "react-router-dom";
+
+import Students from "./components/Pages/Students";
+import Subjects from "./components/Pages/Subjects";
+import InputData from "./components/Pages/InputData";
+import Groups from "./components/Pages/Groups";
+import ControlType from "./components/Pages/ControlType";
 
 const { Header, Sider, Content } = Layout;
 
@@ -36,13 +43,13 @@ function App() {
             <Link to="/subjects">Предметы</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<UsergroupAddOutlined />}>
-            <Link to="/subjects">Группы</Link>
+            <Link to="/groups">Группы</Link>
           </Menu.Item>
           <Menu.Item key="5" icon={<SettingOutlined />}>
             <Link to="/controlType">Тип контроля</Link>
           </Menu.Item>
           <Menu.Item key="6" icon={<UploadOutlined />}>
-            <Link to="/уxit">Выход</Link>
+            <Link to="/еxit">Выход</Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -64,7 +71,11 @@ function App() {
             minHeight: 280,
           }}
         >
-          Content
+          <Route exact path={"/students"} component={Students} />
+          <Route exact path={"/subjects"} component={Subjects} />
+          <Route exact path={"/inputData"} component={InputData} />
+          <Route exact path={"/groups"} component={Groups} />
+          <Route exact path={"/controlType"} component={ControlType} />
         </Content>
       </Layout>
     </Layout>
