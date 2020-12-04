@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #14bdac;
+}
+
+.windowGame {
+  width: 600px;
+  height: 600px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cell {
+  width: 200px;
+  height: 200px;
+  border: 3px solid rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.O {
+  font-size: 120px;
+  color: rgb(88, 88, 88);
+}
+
+.X {
+  font-size: 120px;
+  color: rgb(243, 243, 243);
+}
+
+.startGame {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.startGame a {
+  text-decoration: none;
+}
+
+.lableStart {
+  font-size: 60px;
+  color: rgb(231, 231, 231);
+}
+
+.buttonStart {
+  background-color: white;
+  width: 200px;
+  height: 40px;
+  padding-bottom: 15px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 70px;
+  font-weight: bold;
+  color: #14bdac;
+}
