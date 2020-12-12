@@ -1,10 +1,13 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom';
+import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { DatePicker } from 'antd';
 
 import App from './App';
+
+import store from "./redux/store";
 
 import './index.css';
 
@@ -15,8 +18,9 @@ ReactDOM.render(
   <>
   <React.StrictMode>
     <BrowserRouter>
+    <Provider store={store}>
       <App />
-      
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
   <DatePicker />

@@ -1,25 +1,24 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "students" : [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+    "id":1,
+    "name": "Ivan",
+    "patronymic":"Patronymic",
+    "lastName":"Pupkin",
+    "dob":{
+      "number":26,
+      "month":"июль",
+      "annum": 2000
     },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+    "groupId": 1,
+    "grant": null,
+    "yearOfAdmission": 2017,
+    "numberCourse": 4,
+    "progress":{}
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "groups":[{
+    "id":1,
+    "name":"КНТ-217"
+  }] 
 }

@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-const students = () => {
+import { loadingUsers } from "../../redux/actions/users";
+
+const Students = () => {
+  const dispatch = useDispatch();
+
+  const users = useSelector(({ users }) => users.items);
+
+  useEffect(() => {
+    dispatch(loadingUsers());
+  }, []);
+
+  console.log(users);
   return <div>students</div>;
 };
 
-export default students;
+export default Students;
