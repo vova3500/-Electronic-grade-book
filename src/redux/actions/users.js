@@ -6,6 +6,11 @@ export const setUsers = (items) => ({
   });
 
   export const loadingUsers = () => async (dispatch) => {
-    let resposne = await usersAPI.getUsers();
-    dispatch(setUsers(resposne.data));
+    try{
+      let resposne = await usersAPI.getUsers();
+      dispatch(setUsers(resposne.data));
+    }
+    catch (e){
+      alert(e)
+    }
   };
