@@ -1,5 +1,6 @@
 const setUsers = "SET_USERS";
 const setSearchUsers = "SET_SEARCH_USERS"
+const sendUsers = "SEND_USERS";
 
 const initialState = {
   items: [],
@@ -8,10 +9,10 @@ const initialState = {
 
 const users = (state = initialState, action) => {
   switch (action.type) {
+    
     case setUsers: {
       let newUsers = [...action.payload].map((user)=>{
         let newUser = {...user}
-        newUser.groups = user.groups[0].name
         newUser.key = newUser.id
         return newUser
       })
@@ -21,12 +22,21 @@ const users = (state = initialState, action) => {
         items: newUsers,
       };
     }
+
     case setSearchUsers: {
       return {
         ...state,
         seacrhItems: action.payload,
       };
     }
+
+    case sendUsers: {
+      return {
+        ...state,
+        items: [...state.items ,action.payload],
+      };
+    }
+
     default: {
       return state;
     }

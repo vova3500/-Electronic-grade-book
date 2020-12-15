@@ -1,14 +1,25 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import Header from "./components/Header";
 import Aside from "./components/Aside";
 import Content from "./components/Content";
+
+import { loadingUsers } from "./redux/actions/users";
+import { loadingGroups } from "./redux/actions/groups";
 
 import { Layout } from "antd";
 
 import "./App.css";
 
 function App() {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(loadingUsers());
+    dispatch(loadingGroups());
+  }, []);
+
   const [collapsed, isCollapsed] = useState(false);
 
   const toggle = () => {

@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
-import { loadingUsers } from "../../redux/actions/users";
 
 import FormStudenst from "../Forms/FormStudenst";
 
-import { Table, Popconfirm } from "antd";
-
-import { SearchOutlined } from "@ant-design/icons";
+import { Table, Popconfirm, Tag } from "antd";
 
 const Students = () => {
   const dispatch = useDispatch();
@@ -15,11 +11,9 @@ const Students = () => {
   const users = useSelector(({ users }) => users.items);
   const seacrhUsers = useSelector(({ users }) => users.seacrhItems);
 
-  const [valueInputLastName, setValueInputLastName] = React.useState("");
+  const groups = useSelector(({ groups }) => groups.items);
 
-  useEffect(() => {
-    dispatch(loadingUsers());
-  }, []);
+  const [valueInputLastName, setValueInputLastName] = React.useState("");
 
   const handleDelete = (id) => {
     alert(id);
@@ -34,7 +28,15 @@ const Students = () => {
     { title: "Имя", dataIndex: "name" },
     { title: "Отчество", dataIndex: "patronymic" },
     { title: "Год поступления", dataIndex: "yearOfAdmission" },
-    { title: "№ Группы", dataIndex: "groups" },
+    {
+      title: "№ Группы",
+      dataIndex: "group",
+      render: (group) => (
+        <Tag color="blue" key={group.name}>
+          {group.name}
+        </Tag>
+      ),
+    },
     { title: "№ Курса", dataIndex: "numberCourse" },
     {
       title: "Удалить",
@@ -55,6 +57,7 @@ const Students = () => {
         setValueInputLastName={setValueInputLastName}
         dispatch={dispatch}
         users={users}
+        groups={groups}
       />
       <Table
         columns={columns}

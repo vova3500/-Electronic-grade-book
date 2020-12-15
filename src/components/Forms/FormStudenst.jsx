@@ -1,11 +1,15 @@
 import React from "react";
 
-import { setSearchUsers } from "../../redux/actions/users";
+import { Form, Input, Button, Collapse, Select } from "antd";
 
-import { Form, Input, Button, Checkbox, Collapse } from "antd";
+import { setSearchUsers, loadingSendUsers } from "../../redux/actions/users";
 
-const FormStudenst = ({ setValueInputLastName, dispatch, users }) => {
+const { Option } = Select;
+
+const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
   const { Panel } = Collapse;
+
+  const [formAddUser] = Form.useForm();
 
   const onFinishSearch = (values) => {
     let newSearchUsers = [];
@@ -14,12 +18,30 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users }) => {
       if (i.lastName.indexOf(values.UsernameSearch) !== -1)
         newSearchUsers.push(i);
     });
+
     setValueInputLastName(values.UsernameSearch);
     dispatch(setSearchUsers(newSearchUsers));
   };
 
-  const onFinishAdd = (errorInfo) => {
-    console.log(errorInfo);
+  const resetInput = () => {
+    formAddUser.resetFields();
+  };
+
+  const onFinishAdd = (user) => {
+    if (typeof user === "object") {
+      let newUser = { ...user };
+
+      groups.forEach((item) => {
+        if (item.name === newUser.groupId) {
+          newUser.groupId = item.id;
+          newUser.group = item;
+        }
+      });
+
+      dispatch(loadingSendUsers(newUser));
+      resetInput();
+      alert("Новый студент добавлен");
+    }
   };
 
   return (
@@ -31,14 +53,15 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users }) => {
             remember: true,
           }}
           onFinish={onFinishAdd}
+          form={formAddUser}
         >
           <Form.Item
             label="Имя"
-            name="username"
+            name="name"
             rules={[
               {
                 required: true,
-                message: "Please input your username!",
+                message: "Please input your name!",
               },
             ]}
           >
@@ -54,7 +77,9 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users }) => {
                 message: "Please input your lastName!",
               },
             ]}
-          ></Form.Item>
+          >
+            <Input />
+          </Form.Item>
 
           <Form.Item
             label="Отчество"
@@ -65,7 +90,61 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users }) => {
                 message: "Please input your patronymic!",
               },
             ]}
-          ></Form.Item>
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Год поступления"
+            name="yearOfAdmission"
+            rules={[
+              {
+                required: true,
+                message: "Please input your yearOfAdmission!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="№ Группы"
+            name="groupId"
+            rules={[
+              {
+                required: true,
+                message: "Please input your groups!",
+              },
+            ]}
+          >
+            <Select
+              showSearch
+              style={{ width: 200 }}
+              placeholder="Select a person"
+              optionFilterProp="children"
+              filterOption={(input, option) =>
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              {groups &&
+                groups.map((group) => (
+                  <Option value={group.name}>{group.name}</Option>
+                ))}
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            label="№ Курса"
+            name="numberCourse"
+            rules={[
+              {
+                required: true,
+                message: "Please input your numberCourse!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
           <Form.Item>
             <Button type="primary" htmlType="submit">
