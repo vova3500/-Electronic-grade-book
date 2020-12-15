@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import FormStudenst from "../Forms/FormStudenst";
 
+import { loadingDeleteUser } from "../../redux/actions/users";
+
 import { Table, Popconfirm, Tag } from "antd";
 
 const Students = () => {
@@ -16,7 +18,7 @@ const Students = () => {
   const [valueInputLastName, setValueInputLastName] = React.useState("");
 
   const handleDelete = (id) => {
-    alert(id);
+    dispatch(loadingDeleteUser(id));
   };
 
   const columns = [
@@ -44,7 +46,7 @@ const Students = () => {
       render: (text, record) => (
         <Popconfirm
           title="Вы уверены что хотить удалить?"
-          onConfirm={() => handleDelete(record.key)}
+          onConfirm={() => handleDelete(record.id)}
         >
           <a>Удальть</a>
         </Popconfirm>

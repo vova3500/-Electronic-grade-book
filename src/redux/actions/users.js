@@ -15,6 +15,11 @@ export const sendUsers = (newUsers) => ({
   payload: newUsers,
 });
 
+export const deleteUser = (id) => ({
+  type: "DELETE_USER",
+  payload: id,
+});
+
 export const loadingUsers = () => async (dispatch) => {
   try{
     let resposne = await usersAPI.getUsers();
@@ -29,6 +34,16 @@ export const loadingSendUsers = (user) => async (dispatch) => {
   try{
    let respons = await usersAPI.sendUsers(user);
     dispatch(sendUsers(respons.data));
+  }
+  catch (e){
+    alert(e)
+  }
+};
+
+export const loadingDeleteUser = (id) => async (dispatch) => {
+  try{
+    await usersAPI.deleteUser(id);
+    dispatch(deleteUser(id));
   }
   catch (e){
     alert(e)

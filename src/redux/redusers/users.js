@@ -1,6 +1,7 @@
 const setUsers = "SET_USERS";
 const setSearchUsers = "SET_SEARCH_USERS"
 const sendUsers = "SEND_USERS";
+const deleteUser = "DELETE_USER"
 
 const initialState = {
   items: [],
@@ -34,6 +35,14 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         items: [...state.items ,action.payload],
+      };
+    }
+
+    case deleteUser: {
+      let newUsers = [...state.items].filter((item)=> item.id !== action.payload)
+      return {
+        ...state,
+        items: newUsers,
       };
     }
 
