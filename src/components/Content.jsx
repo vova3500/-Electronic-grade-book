@@ -6,6 +6,7 @@ import Subjects from "./Pages/Subjects";
 import InputData from "./Pages/InputData";
 import Groups from "./Pages/Groups";
 import ControlType from "./Pages/ControlType";
+import ErrorBoundary from "./ErrorBoundary";
 
 import { Layout } from "antd";
 
@@ -19,11 +20,51 @@ const Content = () => {
         minHeight: 280,
       }}
     >
-      <Route exact path={"/students"} component={Students} />
-      <Route exact path={"/subjects"} component={Subjects} />
-      <Route exact path={"/inputData"} component={InputData} />
-      <Route exact path={"/groups"} component={Groups} />
-      <Route exact path={"/controlType"} component={ControlType} />
+      <Route
+        exact
+        path={"/students"}
+        render={() => (
+          <ErrorBoundary>
+            <Students />
+          </ErrorBoundary>
+        )}
+      />
+      <Route
+        exact
+        path={"/subjects"}
+        render={() => (
+          <ErrorBoundary>
+            <Subjects />
+          </ErrorBoundary>
+        )}
+      />
+      <Route
+        exact
+        path={"/inputData"}
+        render={() => (
+          <ErrorBoundary>
+            <InputData />
+          </ErrorBoundary>
+        )}
+      />
+      <Route
+        exact
+        path={"/groups"}
+        render={() => (
+          <ErrorBoundary>
+            <Groups />
+          </ErrorBoundary>
+        )}
+      />
+      <Route
+        exact
+        path={"/controlType"}
+        render={() => (
+          <ErrorBoundary>
+            <ControlType />
+          </ErrorBoundary>
+        )}
+      />
     </Layout.Content>
   );
 };
