@@ -7,6 +7,7 @@ import Content from "./components/Content";
 
 import { loadingUsers } from "./redux/actions/users";
 import { loadingGroups } from "./redux/actions/groups";
+import { loadingDiscipline } from "./redux/actions/disciplines";
 
 import { Layout } from "antd";
 
@@ -18,6 +19,7 @@ function App() {
   React.useEffect(() => {
     dispatch(loadingUsers());
     dispatch(loadingGroups());
+    dispatch(loadingDiscipline());
   }, []);
 
   const [collapsed, isCollapsed] = useState(false);

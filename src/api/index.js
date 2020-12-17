@@ -29,3 +29,11 @@ export const groupsAPI = {
     );
   },
 };
+
+export const disciplinesAPI = {
+  getDisciplines() {
+    return instance.get(
+      "disciplines"
+    );
+  },
+};

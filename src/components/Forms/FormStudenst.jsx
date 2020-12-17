@@ -1,8 +1,9 @@
 import React from "react";
-
-import { Form, Input, Button, Collapse, Select } from "antd";
+import { useSelector } from "react-redux";
 
 import { setSearchUsers, loadingSendUsers } from "../../redux/actions/users";
+
+import { Form, Input, Button, Collapse, Select } from "antd";
 
 const { Option } = Select;
 
@@ -10,6 +11,8 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
   const { Panel } = Collapse;
 
   const [formAddUser] = Form.useForm();
+
+  const disciplines = useSelector(({ disciplines }) => disciplines.items);
 
   const resetInput = () => {
     formAddUser.resetFields();
@@ -31,10 +34,17 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
     if (typeof user === "object") {
       let newUser = { ...user };
 
+      let userDisciplines = disciplines.map((item) => ({
+        id: item.id,
+        name: item.name,
+        count: 0,
+      }));
+
       groups.forEach((item) => {
         if (item.name === newUser.groupId) {
           newUser.groupId = item.id;
           newUser.group = item;
+          newUser.rating = userDisciplines;
         }
       });
 

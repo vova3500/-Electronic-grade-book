@@ -21,6 +21,17 @@ const Students = () => {
     dispatch(loadingDeleteUser(id));
   };
 
+  const expandedRowRender = (data) => {
+    const columns = [
+      { title: "Дисциплина", dataIndex: "name" },
+      { title: "Оценка", dataIndex: "count" },
+    ];
+
+    return (
+      <Table columns={columns} dataSource={data.rating} pagination={false} />
+    );
+  };
+
   const columns = [
     { title: "№ Зачётки", dataIndex: "id" },
     {
@@ -64,6 +75,7 @@ const Students = () => {
       <Table
         columns={columns}
         dataSource={valueInputLastName ? seacrhUsers : users}
+        expandable={{ expandedRowRender }}
       />
     </div>
   );

@@ -1,24 +1,82 @@
 {
-  "students" : [
+  "students":[
     {
-    "id":1,
-    "name": "Ivan",
-    "patronymic":"Patronymic",
-    "lastName":"Pupkin",
-    "dob":{
-      "number":26,
-      "month":"июль",
-      "annum": 2000
-    },
-    "groupId": 1,
-    "grant": null,
-    "yearOfAdmission": 2017,
-    "numberCourse": 4,
-    "progress":{}
+      "id":1,
+      "name": "Ivan",
+      "patronymic":"Patronymic",
+      "lastName":"Pupkin",
+      "groupId": 1,
+      "grant": null,
+      "yearOfAdmission": 2017,
+      "numberCourse": 4,
+      "progress":{},
+      "rating":[
+        {
+          "id":1,
+          "name": "Вища Математика",
+          "count": 0
+        },
+        {
+          "id":2,
+          "name": "Химия",
+          "count": 60
+        },
+        {
+          "id":3,
+          "name": "Физика",
+          "count": 90
+        },
+        {
+          "id":4,
+          "name": "Теория систем",
+          "count": 75
+        },
+        {
+          "id":5,
+          "name": "Право",
+          "count": 53
+        }
+      ]
     }
   ],
-  "groups":[{
-    "id":1,
-    "name":"КНТ-217"
-  }] 
+  "groups":[
+    {
+      "id":1,
+      "name":"КНТ-217"
+    },
+    {
+      "id":2,
+      "name":"КНТ-117"
+    },
+    {
+      "id":3,
+      "name":"ИФ-312"
+    },
+    {
+      "id":4,
+      "name":"ИФ-123"
+    }
+  ],
+  "disciplines":[
+    {
+      "id":1,
+      "name": "Вища Математика"
+    },
+    {
+      "id":2,
+      "name": "Химия"
+    },
+    {
+      "id":3,
+      "name": "Физика"
+    },
+    {
+      "id":4,
+      "name": "Теория систем"
+    },
+    {
+      "id":5,
+      "name": "Право"
+    }
+  ]
 }
