@@ -11,6 +11,10 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
 
   const [formAddUser] = Form.useForm();
 
+  const resetInput = () => {
+    formAddUser.resetFields();
+  };
+
   const onFinishSearch = (values) => {
     let newSearchUsers = [];
 
@@ -21,10 +25,6 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
 
     setValueInputLastName(values.UsernameSearch);
     dispatch(setSearchUsers(newSearchUsers));
-  };
-
-  const resetInput = () => {
-    formAddUser.resetFields();
   };
 
   const onFinishAdd = (user) => {
