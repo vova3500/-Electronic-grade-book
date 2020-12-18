@@ -48,6 +48,8 @@ const Students = () => {
     {
       title: "№ Группы",
       dataIndex: "group",
+      sorter: (a, b) => a.group.name.length - b.group.name.length,
+      sortDirections: ["descend", "ascend"],
       render: (group) => (
         <Tag color="blue" key={group.name}>
           {group.name}
