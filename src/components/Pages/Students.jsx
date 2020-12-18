@@ -33,14 +33,18 @@ const Students = () => {
   };
 
   const columns = [
-    { title: "№ Зачётки", dataIndex: "id" },
+    { title: "№ Зачётки", dataIndex: "id", sorter: (a, b) => a.id - b.id },
     {
       title: `Фамилия`,
       dataIndex: "lastName",
     },
     { title: "Имя", dataIndex: "name" },
     { title: "Отчество", dataIndex: "patronymic" },
-    { title: "Год поступления", dataIndex: "yearOfAdmission" },
+    {
+      title: "Год поступления",
+      dataIndex: "yearOfAdmission",
+      sorter: (a, b) => a.yearOfAdmission - b.yearOfAdmission,
+    },
     {
       title: "№ Группы",
       dataIndex: "group",
@@ -50,7 +54,11 @@ const Students = () => {
         </Tag>
       ),
     },
-    { title: "№ Курса", dataIndex: "numberCourse" },
+    {
+      title: "№ Курса",
+      dataIndex: "numberCourse",
+      sorter: (a, b) => a.numberCourse - b.numberCourse,
+    },
     {
       title: "Удалить",
       dataIndex: "delete",

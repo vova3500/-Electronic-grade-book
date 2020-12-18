@@ -55,7 +55,7 @@ const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
   };
 
   return (
-    <Collapse accordion>
+    <Collapse style={{ marginBottom: "24px" }} accordion>
       <Panel header="Добавить" key="1">
         <Form
           name="addUsers"

@@ -14,7 +14,7 @@ const users = (state = initialState, action) => {
     case setUsers: {
       let newUsers = [...action.payload].map((user)=>{
         let newUser = {...user}
-        newUser.key = newUser.id
+        newUser.key = newUser.id 
         return newUser
       })
       
