@@ -4,26 +4,12 @@ import { useSelector } from "react-redux";
 import FormAddStudent from "./FormAddStudent";
 import FormSearchUsers from "./FormSearchUsers";
 
-import { setSearchUsers } from "../../../redux/actions/users";
+import { Collapse } from "antd";
 
-import { Form, Input, Button, Collapse } from "antd";
-
-const FormStudenst = ({ setValueInputLastName, dispatch, users, groups }) => {
+const FormStudenst = ({ setValueInputLastName, users, groups }) => {
   const { Panel } = Collapse;
 
   const disciplines = useSelector(({ disciplines }) => disciplines.items);
-
-  const onFinishSearch = (values) => {
-    let newSearchUsers = [];
-
-    users.forEach((i) => {
-      if (i.lastName.indexOf(values.UsernameSearch) !== -1)
-        newSearchUsers.push(i);
-    });
-
-    setValueInputLastName(values.UsernameSearch);
-    dispatch(setSearchUsers(newSearchUsers));
-  };
 
   return (
     <Collapse style={{ marginBottom: "24px" }} accordion>

@@ -21,8 +21,7 @@ const FormAddStudent = ({ disciplines, groups }) => {
       let newUser = { ...user };
 
       let userDisciplines = disciplines.map((item) => ({
-        id: item.id,
-        name: item.name,
+        ...item,
         count: 0,
       }));
 
@@ -122,7 +121,9 @@ const FormAddStudent = ({ disciplines, groups }) => {
         >
           {groups &&
             groups.map((group) => (
-              <Option value={group.name}>{group.name}</Option>
+              <Option key={group.id} value={group.name}>
+                {group.name}
+              </Option>
             ))}
         </Select>
       </Form.Item>
