@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import FormStudenst from "../Forms/FormStudenst";
+import FormStudenst from "../Forms/FormStudent/FormStudenst";
 
 import { loadingDeleteUser } from "../../redux/actions/users";
 
