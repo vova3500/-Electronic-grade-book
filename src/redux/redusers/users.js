@@ -1,3 +1,4 @@
+const setLoader ="SET_LOADER"
 const setUsers = "SET_USERS";
 const setSearchUsers = "SET_SEARCH_USERS"
 const sendUsers = "SEND_USERS";
@@ -6,10 +7,18 @@ const deleteUser = "DELETE_USER"
 const initialState = {
   items: [],
   seacrhItems: [],
+  loader: false
 };
 
 const users = (state = initialState, action) => {
   switch (action.type) {
+
+    case setLoader: {
+      return {
+        ...state,
+        loader: !state.loader,
+      };
+    }
     
     case setUsers: {
       let newUsers = [...action.payload].map((user)=>{

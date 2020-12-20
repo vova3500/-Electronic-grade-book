@@ -35,7 +35,6 @@ const FormAddStudent = ({ disciplines, groups }) => {
 
       dispatch(loadingSendUsers(newUser));
       resetInput();
-      alert("Новый студент добавлен");
     }
   };
 

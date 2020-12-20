@@ -5,10 +5,12 @@ import FormStudenst from "../Forms/FormStudent/FormStudenst";
 
 import { loadingDeleteUser } from "../../redux/actions/users";
 
-import { Table, Popconfirm, Tag } from "antd";
+import { Table, Popconfirm, Tag, Spin } from "antd";
 
 const Students = () => {
   const dispatch = useDispatch();
+
+  const loader = useSelector(({ users }) => users.loader);
 
   const users = useSelector(({ users }) => users.items);
   const seacrhUsers = useSelector(({ users }) => users.seacrhItems);
@@ -85,7 +87,7 @@ const Students = () => {
     },
   ];
   return (
-    <div>
+    <Spin size="large" spinning={loader} tip="Loading...">
       <FormStudenst
         setValueInputLastName={setValueInputLastName}
         users={users}
@@ -96,7 +98,7 @@ const Students = () => {
         dataSource={valueInputLastName ? seacrhUsers : users}
         expandable={{ expandedRowRender }}
       />
-    </div>
+    </Spin>
   );
 };
 

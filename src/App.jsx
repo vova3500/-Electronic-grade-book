@@ -9,7 +9,7 @@ import { loadingUsers } from "./redux/actions/users";
 import { loadingGroups } from "./redux/actions/groups";
 import { loadingDiscipline } from "./redux/actions/disciplines";
 
-import { Layout } from "antd";
+import { Layout, Spin } from "antd";
 
 import "./App.css";
 

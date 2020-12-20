@@ -1,5 +1,9 @@
 import { usersAPI } from "../../api";
 
+export const setLoader = () => ({
+  type: "SET_LOADER",
+});
+
 export const setUsers = (items) => ({
   type: "SET_USERS",
   payload: items,
@@ -22,7 +26,9 @@ export const deleteUser = (id) => ({
 
 export const loadingUsers = () => async (dispatch) => {
   try{
+   dispatch(setLoader())
     let resposne = await usersAPI.getUsers();
+    dispatch(setLoader())
     dispatch(setUsers(resposne.data));
   }
   catch (e){
@@ -32,7 +38,9 @@ export const loadingUsers = () => async (dispatch) => {
 
 export const loadingSendUsers = (user) => async (dispatch) => {
   try{
-   let respons = await usersAPI.sendUsers(user);
+    dispatch(setLoader())
+    let respons = await usersAPI.sendUsers(user);
+    dispatch(setLoader())
     dispatch(sendUsers(respons.data));
   }
   catch (e){
@@ -42,7 +50,9 @@ export const loadingSendUsers = (user) => async (dispatch) => {
 
 export const loadingDeleteUser = (id) => async (dispatch) => {
   try{
+    dispatch(setLoader())
     await usersAPI.deleteUser(id);
+    dispatch(setLoader())
     dispatch(deleteUser(id));
   }
   catch (e){
