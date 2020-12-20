@@ -23,6 +23,7 @@ const Students = () => {
 
   const expandedRowRender = (data) => {
     let rating = data.rating.map((item) => ({ ...item, key: item.id }));
+
     const columns = [
       { title: "Дисциплина", dataIndex: "name", key: "Subjects" },
       { title: "Оценка", dataIndex: "count", key: "count" },
