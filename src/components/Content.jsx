@@ -8,7 +8,7 @@ import Groups from "./Pages/Groups";
 import ControlType from "./Pages/ControlType";
 import ErrorBoundary from "./ErrorBoundary";
 
-import { Layout, Spin } from "antd";
+import { Layout } from "antd";
 
 const Content = () => {
   return (
@@ -21,15 +21,7 @@ const Content = () => {
           minHeight: 280,
         }}
       >
-        <Route
-          exact
-          path={"/students"}
-          render={() => (
-            <ErrorBoundary>
-              <Students />
-            </ErrorBoundary>
-          )}
-        />
+        <Route exact path={"/students"} component={Students} />
         <Route
           exact
           path={"/subjects"}

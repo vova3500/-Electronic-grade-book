@@ -24,6 +24,11 @@ export const deleteUser = (id) => ({
   payload: id,
 });
 
+export const updateUser = (user) => ({
+  type: "UPDATE_USER",
+  payload: user,
+});
+
 export const loadingUsers = () => async (dispatch) => {
   try{
    dispatch(setLoader())
@@ -54,6 +59,20 @@ export const loadingDeleteUser = (id) => async (dispatch) => {
     await usersAPI.deleteUser(id);
     dispatch(setLoader())
     dispatch(deleteUser(id));
+  }
+  catch (e){
+    alert(e)
+  }
+};
+
+export const loadingUpdateUser = (id,rating) => async (dispatch) => {
+  try{
+    // console.log(rating);
+    dispatch(setLoader())
+    let respons = await usersAPI.updateRating(id,rating);
+    dispatch(setLoader())
+    dispatch(updateUser(respons.data))
+    // dispatch(deleteUser(id,disciplineId,count));
   }
   catch (e){
     alert(e)

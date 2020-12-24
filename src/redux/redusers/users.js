@@ -2,7 +2,8 @@ const setLoader ="SET_LOADER"
 const setUsers = "SET_USERS";
 const setSearchUsers = "SET_SEARCH_USERS"
 const sendUsers = "SEND_USERS";
-const deleteUser = "DELETE_USER"
+const deleteUser = "DELETE_USER";
+const updateUser = "UPDATE_USER"
 
 const initialState = {
   items: [],
@@ -52,6 +53,19 @@ const users = (state = initialState, action) => {
       return {
         ...state,
         items: newUsers,
+      };
+    }
+    
+    case updateUser: {
+      let newUsers = [...state.items].map((user) => {
+        if (user.id === action.payload.id) {
+          user = {...action.payload, group:user.group}
+        }
+        return user
+      })
+      return {
+        ...state,
+        items: newUsers
       };
     }
 

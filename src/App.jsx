@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import Header from "./components/Header";
@@ -9,18 +9,19 @@ import { loadingUsers } from "./redux/actions/users";
 import { loadingGroups } from "./redux/actions/groups";
 import { loadingDiscipline } from "./redux/actions/disciplines";
 
-import { Layout, Spin } from "antd";
+import { Layout } from "antd";
 
 import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
+  useEffect(() => {
+    console.log("rerender");
     dispatch(loadingUsers());
     dispatch(loadingGroups());
     dispatch(loadingDiscipline());
-  }, []);
+  }, [dispatch]);
 
   const [collapsed, isCollapsed] = useState(false);
 

@@ -1,10 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { Table } from "antd";
+import { Table, Spin } from "antd";
 const Groups = () => {
   const groups = useSelector(({ groups }) => groups.items);
   const users = useSelector(({ users }) => users.items);
+
+  const loader = useSelector(({ groups }) => groups.loader);
 
   const expandedRowRender = (data) => {
     let dataUser = users.filter((item) => item.groupId === data.id);
@@ -32,11 +34,13 @@ const Groups = () => {
   const columns = [{ title: "№ Группы", dataIndex: "name" }];
 
   return (
-    <Table
-      columns={columns}
-      dataSource={dataGroups}
-      expandable={{ expandedRowRender }}
-    />
+    <Spin size="large" spinning={loader} tip="Loading...">
+      <Table
+        columns={columns}
+        dataSource={dataGroups}
+        expandable={{ expandedRowRender }}
+      />
+    </Spin>
   );
 };
 

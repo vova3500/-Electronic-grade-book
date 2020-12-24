@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector } from "react-redux";
 
 import FormAddStudent from "./FormAddStudent";
@@ -6,7 +6,7 @@ import FormSearchUsers from "./FormSearchUsers";
 
 import { Collapse } from "antd";
 
-const FormStudenst = ({ setValueInputLastName, users, groups }) => {
+const FormStudenst = memo(({ setValueInputLastName, users, groups }) => {
   const { Panel } = Collapse;
 
   const disciplines = useSelector(({ disciplines }) => disciplines.items);
@@ -24,6 +24,6 @@ const FormStudenst = ({ setValueInputLastName, users, groups }) => {
       </Panel>
     </Collapse>
   );
-};
+});
 
 export default FormStudenst;

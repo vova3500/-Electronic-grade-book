@@ -19,6 +19,11 @@ export const usersAPI = {
     return instance.delete(
       `students/${id}`
     );
+  },
+  updateRating(id,rating) {
+    return instance.patch(
+      `students/${id}`,{rating}
+    )
   }
 };
 

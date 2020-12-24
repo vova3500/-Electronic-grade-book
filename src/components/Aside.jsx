@@ -14,7 +14,7 @@ import {
 const Aside = ({ collapsed }) => {
   return (
     <Layout.Sider trigger={null} collapsible collapsed={collapsed}>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+      <Menu theme="dark" mode="inline">
         <Menu.Item key="1" icon={<UserOutlined />}>
           <Link to="/students">Студенты</Link>
         </Menu.Item>
